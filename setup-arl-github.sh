@@ -159,7 +159,7 @@ if [ ! -f /etc/systemd/system/arl-scheduler.service ]; then
 fi
 
 echo "start arl services ..."
-semanage port -a -t http_port_t -p tcp 5003
+setenforce 0
 systemctl enable arl-web
 systemctl start arl-web
 systemctl enable arl-worker
