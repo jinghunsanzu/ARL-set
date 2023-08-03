@@ -17,7 +17,7 @@ EOF
 echo "install dependencies ..."
 yum install epel-release -y
 yum install python36 mongodb-org-server mongodb-org-shell rabbitmq-server python36-devel gcc-c++ git \
- nginx  fontconfig wqy-microhei-fonts -y
+ nginx  fontconfig wqy-microhei-fonts unzip wget -y
 
 if [ ! -f /usr/bin/python3.6 ]; then
   echo "link python3.6"
@@ -30,7 +30,21 @@ if [ ! -f /usr/local/bin/pip3.6 ]; then
   pip3.6 install --upgrade pip
 fi
 
-rpm -vhU https://nmap.org/dist/nmap-7.91-1.x86_64.rpm
+if ! command -v nmap &> /dev/null
+then
+    echo "install nmap-7.91-1 ..."
+    rpm -vhU https://nmap.org/dist/nmap-7.91-1.x86_64.rpm
+fi
+
+
+if ! command -v nuclei &> /dev/null
+then
+  echo "install nuclei_2.9.4 ..."
+  wget https://gitee.com/jinghunsanzu/nuclei1/releases/download/v2.9.4/nuclei_2.9.4_linux_amd64.zip
+  unzip nuclei_2.9.4_linux_amd64.zip && mv nuclei /usr/bin/ && rm -f nuclei_2.9.4_linux_amd64.zip
+  nuclei
+fi
+
 
 echo "start services ..."
 systemctl enable mongod
@@ -51,31 +65,31 @@ fi
 
 cd ARL-NPoC
 echo "install poc requirements ..."
-pip3.6 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn
+pip3.6 install -r requirements.txt
 pip3.6 install -e .
 cd ../
 
 if [ ! -f /usr/local/bin/ncrack ]; then
   echo "Download ncrack ..."
-  wget https://gitee.com/jinghunsanzu/arl-files/raw/master/ncrack -O /usr/local/bin/ncrack
+  wget https://gitee.com/jinghunsanzu/arl_files/raw/master/ncrack -O /usr/local/bin/ncrack
   chmod +x /usr/local/bin/ncrack
 fi
 
 mkdir -p /usr/local/share/ncrack
 if [ ! -f /usr/local/share/ncrack/ncrack-services ]; then
   echo "Download ncrack-services ..."
-  wget https://gitee.com/jinghunsanzu/arl-files/raw/master/ncrack-services -O /usr/local/share/ncrack/ncrack-services
+  wget https://gitee.com/jinghunsanzu/arl_files/raw/master/ncrack-services -O /usr/local/share/ncrack/ncrack-services
 fi
 
 mkdir -p /data/GeoLite2
 if [ ! -f /data/GeoLite2/GeoLite2-ASN.mmdb ]; then
   echo "download GeoLite2-ASN.mmdb ..."
-  wget https://gitee.com/jinghunsanzu/arl-files/raw/master/GeoLite2-ASN.mmdb -O /data/GeoLite2/GeoLite2-ASN.mmdb
+  wget https://gitee.com/jinghunsanzu/nuclei1/releases/download/v2.9.4/GeoLite2-ASN.mmdb -O /data/GeoLite2/GeoLite2-ASN.mmdb
 fi
 
 if [ ! -f /data/GeoLite2/GeoLite2-City.mmdb ]; then
   echo "download GeoLite2-City.mmdb ..."
-  wget https://gitee.com/jinghunsanzu/arl-files/raw/master/GeoLite2-City.mmdb -O /data/GeoLite2/GeoLite2-City.mmdb
+  wget https://gitee.com/jinghunsanzu/nuclei1/releases/download/v2.9.4/GeoLite2-City.mmdb -O /data/GeoLite2/GeoLite2-City.mmdb
 fi
 
 cd ARL
@@ -163,4 +177,3 @@ systemctl status arl-worker-github
 systemctl status arl-scheduler
 
 echo "安装完成 默认用户名密码admin/arlpass 浏览器访问http://ip:5003"
-
