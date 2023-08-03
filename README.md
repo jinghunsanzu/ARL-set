@@ -6,10 +6,10 @@
 
 ```
 vim /etc/sysconfig/selinux，SELINUX=disabled，然后保存退出。
-wget https://raw.githubusercontent.com/TophantTechnology/ARL/master/misc/setup-arl.sh
+wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
 chmod +x setup-arl.sh
 ./setup-arl.sh
 ```
 (./image/selinux.png)
 
-国内安装将https://raw.githubusercontent.com/TophantTechnology/ARL/master/misc/setup-arl.sh换成
+国内安装将wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh换成wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
