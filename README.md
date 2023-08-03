@@ -30,4 +30,5 @@ chmod +x setup-arl.sh
 ./setup-arl.sh
 ```
 
-国内安装将wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh  换成   wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
+国内安装将wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh  换成 
+wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
