@@ -25,9 +25,9 @@ SELINUXTYPE=targeted
 如果在其他目录可以创建软连接，且安装了四个服务分别为`arl-web`, `arl-worker`, `arl-worker-github`, `arl-scheduler`
 
 ```
-wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
-chmod +x setup-arl.sh
-./setup-arl.sh
+wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh
+chmod +x setup-arl-github.sh
+./setup-arl-github.sh
 ```
 
 国内安装将wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh  换成 
