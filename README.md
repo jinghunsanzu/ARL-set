@@ -4,7 +4,7 @@
 仅仅适配了 centos 7 ，且灯塔安装目录为/opt/ARL
 安装前必须关闭防火墙和selinux
 ```
-vim /etc/sysconfig/selinux，SELINUX=disabled，然后保存退出。默认：#SELINUX=enforcing
+vi /etc/sysconfig/selinux，SELINUX=disabled，然后保存退出。默认：#SELINUX=enforcing
 ```
 下面是/etc/sysconfig/selinux默认文件的配置
 
