@@ -12,4 +12,4 @@ chmod +x setup-arl.sh
 ```
 (./image/selinux.png)
 
-国内安装将wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh换成wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
+国内安装将wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-github.sh  换成   wget https://github.com/jinghunsanzu/ARL-set/releases/download/ARL/setup-arl-cn.sh
